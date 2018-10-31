@@ -1,0 +1,20 @@
+{
+  "name": "gatsby-wiki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gatsby": "^2.0.35",
+    "react": "^16.7.0-alpha.0",
+    "typescript": "^3.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-react": "^7.0.0"
+  }
+}
