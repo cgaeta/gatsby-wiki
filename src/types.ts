@@ -1,12 +1,12 @@
 type Id = string;
 
-enum Race {
-  Human,
+export enum Race {
+  Human = 1,
   Dwarf,
   Elf,
   Halfling,
   Gnome,
-  HalfElf,
+  Half_Elf,
   Dragonborn,
   Tiefling,
   Firbolg,
@@ -15,13 +15,13 @@ enum Race {
   Triton,
   Gith,
   Tortle,
-  YuanTi,
+  Yuan_Ti,
   Goblin,
-  BugBear,
-  HobGoblin,
+  Bugbear,
+  Hobgoblin,
 };
 
-enum Domain {
+export enum Domain {
   Knowledge,
   War,
   Tempest,
@@ -35,24 +35,24 @@ interface Entity {
   name: string,
 }
 
-type Quest = Entity & {
+export type Quest = Entity & {
   details: string,
   complete: boolean,
   subquests: Quest[],
 }
 
-type Person = Entity & {
+export type Person = Entity & {
   race: Race,
   relationships: Person & { relation: string }[],
   quests: Quest[],
 }
 
-type God = Person & {
+export type God = Person & {
   alias: string[],
   domains: Domain[],
 }
 
-type Place = Entity & {
+export type Place = Entity & {
   description: string,
   residents: Person[],
   quests: Quest[],
