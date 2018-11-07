@@ -1,4 +1,5 @@
 import React, { SFC } from 'react';
+import { setProps } from './helpers';
 
 type Props = {
   children: JSX.Element | JSX.Element[],
@@ -8,9 +9,10 @@ type Props = {
 
 const Select: SFC<Props> = ({ children, onChange, value }) => {
   const _onChange = (event) => { onChange(event.target.value); };
+  const props = setProps(value, onChange);
 
   return (
-    <select value={value} onChange={_onChange}>{children}</select>
+    <select {...props}>{children}</select>
   );
 }
 

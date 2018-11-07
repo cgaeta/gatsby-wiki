@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { SFC } from 'react';
 
-const TextInput = ({ onChange, value }: {
+type Props = {
   value: string,
   onChange: (string) => void,
-}) => {
-  const _onChange = (event) => { onChange(event.target.value); };
+};
 
+type InputHandler = (string) => void;
+
+type InputEvent = {
+  target: {
+    value: string,
+  },
+};
+
+type OnChange = (InputHandler) => (InputEvent) => void;
+
+const _onChange: OnChange = (fn) =>
+  (event) => fn(event.target.value);
+
+const TextInput: SFC<Props> = ({ value, onChange }) => {
   return (
-    <input type="text" value={value} onChange={_onChange} />
+    <input value={value} onChange={_onChange(onChange)} />
   )
 };
 
