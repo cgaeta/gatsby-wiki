@@ -1,17 +1,29 @@
-import React, { useState } from 'react';
-import QueryRace from './QueryRace';
-import { TextInput } from './Inputs/index';
+import React, { useState } from "react";
+import QueryRace from "./QueryRace";
+import { TextInput } from "./Inputs/index";
 
-const Person = () => {
+import { Race } from "../types";
 
-  const [name, setName] = useState('');
-  const [race, setRace] = useState('');
+type Props = {
+  name: string;
+  setName: (string) => void;
+  race: Race;
+  setRace: (string) => void;
+};
+
+const Person = ({ name, setName, race, setRace }: Props) => {
+  // const [name, setName] = useState("");
+  // const [race, setRace] = useState("");
 
   return (
-    <div>
-      <TextInput value={name} onChange={setName} />
-      <QueryRace value={race} onChange={setRace} />
-    </div>
+    <tr>
+      <td>
+        <TextInput value={name} onChange={setName} />
+      </td>
+      <td>
+        <QueryRace value={race} onChange={setRace} />
+      </td>
+    </tr>
   );
 };
 
