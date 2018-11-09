@@ -12,9 +12,6 @@ type Props = {
 };
 
 const Person = ({ name, setName, race, setRace }: Props) => {
-  // const [name, setName] = useState("");
-  // const [race, setRace] = useState("");
-
   return (
     <tr>
       <td>

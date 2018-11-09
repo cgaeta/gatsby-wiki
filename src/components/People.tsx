@@ -8,24 +8,25 @@ type Props = {};
 const People: () => JSX.Element = props => {
   const [people, setPeople] = useState([]);
 
-  const personProps = idx => ({
-    name: "",
+  const personHandlers = idx => ({
     setName: name =>
       setPeople(people =>
-        people.map((person, i) => (i === idx ? { ...person, name } : person))
+        people.map((person, i) => {
+          console.log(person, i, i === idx);
+          return i === idx ? { ...person, name } : person;
+        })
       ),
-    race: "",
     setRace: race =>
       setPeople(people =>
-        people.map((person, i) => (i === idx ? { ...person, race } : person))
+        people.map((person, i) => {
+          console.log(person, i, i === idx);
+          return i === idx ? { ...person, race } : person;
+        })
       )
   });
 
   const clickHandler: () => void = () => {
-    setPeople(currentPeople => [
-      ...currentPeople,
-      personProps(currentPeople.length)
-    ]);
+    setPeople(currentPeople => [...currentPeople, { name: "", race: "" }]);
   };
 
   return (
@@ -37,7 +38,11 @@ const People: () => JSX.Element = props => {
             <th>Race</th>
           </tr>
         </thead>
-        <tbody>{people.map(person => <Person />)}</tbody>
+        <tbody>
+          {people.map((person, idx) => (
+            <Person key={idx} {...personHandlers(idx)} {...person} />
+          ))}
+        </tbody>
       </table>
       <button onClick={clickHandler}>New Person</button>
     </div>
